@@ -1,0 +1,30 @@
+<!-- Copyright (c) 2021, NVIDIA CORPORATION.  All rights reserved. -->
+<!-- -->
+<!-- NVIDIA CORPORATION and its licensors retain all intellectual property -->
+<!-- and proprietary rights in and to this software, related documentation -->
+<!-- and any modifications thereto.  Any use, reproduction, disclosure or -->
+<!-- distribution of this software and related documentation without an express -->
+<!-- license agreement from NVIDIA CORPORATION is strictly prohibited. -->
+<!-- -->
+<!-- SPDX-License-Identifier: MIT -->
+
+<package>
+  <name>nv_sensors</name>
+  <version>0.0.0</version>
+  <description>The nv_sensors packages Camera sensors producer node.
+               Producer node leverages Driveworks SDK to capture sensors data and the post to the respective topic.
+               Producer node advertises the services '#sensor#_start' and '#sensor#_stop' to control data acquisition from the sensors.
+             </description>
+
+  <maintainer email="prasunk@nvidia.com">nvidia</maintainer>
+
+  <license>NVIDIA</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>message_generation</build_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>message_runtime</run_depend>
+
+</package>
