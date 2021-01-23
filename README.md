@@ -1,7 +1,10 @@
-[[_TOC_]]
+* [install NVIDIA DRIVE™ OS 5.2.0 and DriveWorks 3.5 (Linux)](https://github.com/nvidia/dw-ros#install-nvidia-drive-os-520-and-driveworks-35-linux)
+* [cross compile ROS](https://github.com/nvidia/dw-ros#cross-compile-ros)
+* [cross compile nv_sensors](https://github.com/nvidia/dw-ros#cross-compile-nv_sensors)
+* [run on the target system](https://github.com/nvidia/dw-ros#run-on-the-target-system)
 
 ## install NVIDIA DRIVE™ OS 5.2.0 and DriveWorks 3.5 (Linux)
-follow NVIDIA DRIVE™ OS 5.2.0 and DriveWorks 3.5 (Linux) Early Access Download [page](HTtps://developer.nvidia.com/drive-agx-early-access-download) to install them. 
+follow the download [page](https://developer.nvidia.com/drive/downloads) to install NVIDIA DRIVE™ OS 5.2.0 and DriveWorks 3.5 (Linux). 
 
 ## cross compile ROS 
 * prepare a cross-compilation sysroot
@@ -44,7 +47,7 @@ sudo mkdir /tmp/ros-cc-overlayfs
 sudo mount -t overlay -o lowerdir=$SYSROOT/lib/aarch64-linux-gnu,upperdir=/lib/aarch64-linux-gnu,workdir=/tmp/ros-cc-overlayfs overlay /lib/aarch64-linux-gnu
 ```
 
-* download source of ROS Melodic Morenia (Ubuntu 18.04 is the target root file system of DRIVE OS Linux 5.2.0)
+* follow this [page](http://wiki.ros.org/melodic/Installation/Source) to install all prerequisites and then run below commands to download source of ROS Melodic Morenia (Ubuntu 18.04 is the target root file system of DRIVE OS Linux 5.2.0)
 
 ```
 mkdir -p ~/ros_catkin_ws/src && cd ~/ros_catkin_ws
@@ -87,7 +90,7 @@ set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY) 
 
 # set system default include dir
-include_directories(BEFORE SYSTEM ${VIBRANTE_PDK}/include)
+include_directories(BEFORE SYSTEM ${ROS_SYSROOT}/../include)
 ```
 cross compile ROS
 
@@ -98,8 +101,8 @@ src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release -DCMAKE
 ## cross compile nv_sensors
 fetch nv_sensors source
 ```
-git clone ssh://git@gitlab-master.nvidia.com:12051/swautosa/driveworks-ros-packages.git
-cd driveworks-ros-packages
+git clone https://github.com/NVIDIA/dw-ros.git
+cd dw-ros
 ```
 set up ROS environment
 ```
